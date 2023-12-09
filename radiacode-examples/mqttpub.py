@@ -19,6 +19,8 @@ import typing
 import paho.mqtt.client as mqtt
 
 from radiacode import RadiaCode
+from radiacode import RealTimeData
+
 
 logger = logging.getLogger('mqttpub')
 
@@ -123,6 +125,8 @@ def main():
             logger.info(f"Publish: {topic}: {payload}")
             client.publish(topic=topic, payload=payload, qos=1, retain=True)
 
+            if isinstance(v, RealTimeData):
+                pass
 
 if __name__ == '__main__':
     main()
